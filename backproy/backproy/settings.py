@@ -40,8 +40,10 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'corsheaders',
-
 ]
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -81,14 +83,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'backproy',
-        'USER': 'root',
+        'USER': 'backadmin',
         'PASSWORD': '12345',
-        'HOST': '127.0.0.1',
+        'HOST': 'localhost',
         'PORT': '3306',
-        
 
     }
 }
+
+
 
 CORS_ORIGIN_ALLOW_ALL = True
 

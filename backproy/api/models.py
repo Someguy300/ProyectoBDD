@@ -67,7 +67,7 @@ class Sala(models.Model):
         return str (self.sala_id)
 
 class Sede(models.Model):
-    Sede_id = models.AutoField(primary_key=True)
+    sede_id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50)    
     ubicacion = models.CharField(max_length=100)
     sala_id = models.ForeignKey(
@@ -79,5 +79,5 @@ class Sede(models.Model):
     combo_id = models.ForeignKey(
         'Combo', on_delete= models.SET_NULL, null=True, default=1)
     def __str__(self):
-        return str (self.cliente_id)
+        return str (self.sede_id)
   
