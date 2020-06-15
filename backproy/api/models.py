@@ -10,7 +10,7 @@ class Pelicula(models.Model):
     pelicula_id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50)
     sinopsis = models.TextField(max_length=100)
-    fecha_estreno = models.CharField(max_length=11)
+    fecha_estreno = models.DateField()
     genero = models.CharField(max_length=50)
     duracion = models.PositiveIntegerField()
     lenguaje = models.CharField(max_length=100)
@@ -18,6 +18,7 @@ class Pelicula(models.Model):
 class Cliente(models.Model):
     cliente_id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50)
+    cedula = models.PositiveIntegerField(blank=True, null=False, default ='1')
     apellido = models.TextField(max_length=50)
     correo = models.CharField(max_length=50)
     
