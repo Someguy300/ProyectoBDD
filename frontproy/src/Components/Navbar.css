@@ -1,0 +1,42 @@
+.center-text{
+    background-color: rgb(255, 136,0);
+    font-family: fantasy;
+   margin: 0;
+   padding:0;
+  
+}
+
+#navbarNav{
+background-color: rgb(255, 136, 0);
+margin-left: 0px;
+padding-left: 0px;
+
+}
+
+.nav-link{
+    color: black;
+    font-size: 15px;
+   
+    
+}
+
+.navbar-brand{
+background-color: rgb(255, 136,0);
+padding-right: 0;
+margin-right: 0;
+
+
+}
+.nav.navbar.navbar-expand-lg.navbar-light.bg-ligh{
+
+padding: 0;
+
+}
+.navbar{
+padding: 0 !important;
+}
+
+
+
+
+

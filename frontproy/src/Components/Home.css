@@ -1,0 +1,60 @@
+.Title{
+background-color: rgb(48, 47, 47);
+color: white;
+text-align: center;
+padding-top: 10px;
+padding-bottom: 10px;
+font-family: fantasy;
+-webkit-text-stroke: 2px black;
+}
+
+
+.slider{
+   
+    width: 300px;
+    margin-top: 0px;
+    padding-top: 0px;
+ width: 100%;
+ margin:auto;
+ overflow: hidden;
+ background-color: rgb(48, 47, 47);
+
+}
+.slider ul{
+
+display: flex;
+padding: 0;
+width: 400%;
+animation: cambio 20s infinite alternate;
+
+}
+
+.slider li{
+width: 100%;
+list-style: none;
+
+}
+
+.slider img{
+    border-radius: 50px;
+    margin-left: 25%;
+width: 50%;
+
+}
+
+
+
+@keyframes cambio{
+0% {margin-left: 0;}
+20%{margin-left: 0;}
+
+25%{ margin-left: -100%;}
+45%{margin-left: -100%;}
+
+50%{margin-left: -200%;}
+70%{margin-left: -200%;}
+
+75%{margin-left: -300%;}
+100%{margin-left: -300%;}
+
+}
