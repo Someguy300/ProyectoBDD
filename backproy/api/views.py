@@ -18,17 +18,17 @@ class EntradaView(viewsets.ModelViewSet):
     queryset = Entrada.objects.all()
     serializer_class = EntradaSerializer
 
+class FacturaView(viewsets.ModelViewSet):
+    queryset = Factura.objects.all()
+    serializer_class = FacturaSerializer
+
 class ProductoView(viewsets.ModelViewSet):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
 
-class ComboView(viewsets.ModelViewSet):
-    queryset = Combo.objects.all()
-    serializer_class = ComboSerializer
-
-class HistorialView(viewsets.ModelViewSet):
-    queryset = Historial.objects.all()
-    serializer_class = HistorialSerializer
+class FuncionView(viewsets.ModelViewSet):
+    queryset = Funcion.objects.all()
+    serializer_class = FuncionSerializer
 
 class SalaView(viewsets.ModelViewSet):
     queryset = Sala.objects.all()
