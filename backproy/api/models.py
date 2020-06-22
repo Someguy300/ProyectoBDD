@@ -53,6 +53,7 @@ class Factura(models.Model):
         'Sede', on_delete= models.SET_NULL, null=True, default=1)
     cliente_id = models.ForeignKey(
         'Cliente', on_delete= models.SET_NULL, null=True, default=1)
+    producto_id = models.ManyToManyField('Producto')
     fecha = models.DateTimeField()
     met_pago = models.CharField(max_length=2,choices=METODOS_PAGO,null=True)
     def __str__(self):
@@ -88,8 +89,7 @@ class Sede(models.Model):
     sede_id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50)    
     ubicacion = models.CharField(max_length=100)
-    sala_id = models.ForeignKey(
-        'Sala', on_delete= models.SET_NULL, null=True, default=1)
+    nro_salas(models.PositiveIntegerField(null=True, default =0)
     #No se si aqui deberia haber una lista de las salas 
     def __str__(self):
         return str (self.sede_id)

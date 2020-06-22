@@ -25,6 +25,7 @@ class FacturaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta: 
         model = Factura 
         fields = ('__all__') 
+    
 
 class ProductoSerializer(serializers.HyperlinkedModelSerializer):
 
