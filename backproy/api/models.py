@@ -7,7 +7,9 @@ from multiselectfield import MultiSelectField
 
 # Create your models here.
 LENGUAJES=(('ES','Español'),('EN','Ingles'))
-GENEROS=(('AC','Accion'),('AV','Aventura'),('AN','Animacion'))
+GENEROS=(('AC','Accion'),('AV','Aventura'),('AN','Animacion')
+    ,('CO','Comedia'),('DR','Drama'),('DO','Documental'),('HO','Horror')
+    ,('SU','Suspenso'),('AN','Animacion'))
 ESTADOS=(('PE','Por Estrenar'),('EC','En Cartelera'),('AR','Archivada'))
 METODOS_PAGO=(('EF','Efectivo'),('DE','Debito'),('CR','Credito'))
 TIPO_DULCES=(('DU','Dulce'),('SA','Salado'))
@@ -20,6 +22,8 @@ class Pelicula(models.Model):
     genero = MultiSelectField(choices=GENEROS,null=True)
     duracion = models.PositiveIntegerField()
     lenguaje = MultiSelectField(choices=LENGUAJES,null=True)
+    def __str__(self):
+        return str (str(self.pelicula_id)+" "+self.nombre)
 
 class Cliente(models.Model):
     cliente_id = models.AutoField(primary_key=True)
@@ -27,6 +31,8 @@ class Cliente(models.Model):
     cedula = models.PositiveIntegerField(blank=True, null=False, default ='1')
     apellido = models.TextField(max_length=50)
     correo = models.CharField(max_length=50)
+    def __str__(self):
+        return str (str(self.cliente_id)+" "+self.nombre+" CI:"+str(self.cedula))
     
 class Entrada(models.Model):
     num_entrada = models.AutoField(primary_key=True)
@@ -44,7 +50,7 @@ class Entrada(models.Model):
     horario = models.TimeField()
     met_pago = models.CharField(max_length=2,choices=METODOS_PAGO,null=True)
     def __str__(self):
-        return str (self.num_entrada)
+        return str (str(self.num_entrada)+" "+self.pelicula)
 
 class Factura(models.Model):
     #Averiguar como meter los productos aqui
@@ -57,7 +63,7 @@ class Factura(models.Model):
     fecha = models.DateTimeField()
     met_pago = models.CharField(max_length=2,choices=METODOS_PAGO,null=True)
     def __str__(self):
-        return str (self.num_entrada)
+        return str (self.num_factura)
 
 
 class Producto(models.Model):
@@ -65,6 +71,8 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=50,null=True)
     precio = models.DecimalField(decimal_places=2, max_digits=10, validators=[MinValueValidator(Decimal('0.01'))])
     tipo = models.CharField(max_length=2,choices=TIPO_DULCES,null=True)
+    def __str__(self):
+        return str (str(self.product_id)+" "+self.nombre)
 
 class Funcion(models.Model):
     id_funcion =  models.AutoField(primary_key=True)
@@ -74,6 +82,8 @@ class Funcion(models.Model):
         'Pelicula', on_delete= models.SET_NULL, null=True, default=1)
     sala_id = models.ForeignKey(
         'Sala', on_delete= models.SET_NULL, null=True, default=1)
+    def __str__(self):
+        return str (str(self.id_funcion)+" Peli_id:"+str(self.pelicula_id)+" Sala_id:"+str(self.sala_id))
 
 
 class Sala(models.Model):
@@ -83,14 +93,15 @@ class Sala(models.Model):
     sede_id = models.ForeignKey(
         'Sede', on_delete= models.SET_NULL, null=True, default=1)
     def __str__(self):
-        return str (self.sala_id)
+        return str (str(self.sala_id)+" Sede_id:"+self.sede.id)
 
 class Sede(models.Model):
     sede_id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50)    
     ubicacion = models.CharField(max_length=100)
-    nro_salas(models.PositiveIntegerField(null=True, default =0)
-    #No se si aqui deberia haber una lista de las salas 
+    nro_salas=models.PositiveIntegerField(null=True, default =0)
     def __str__(self):
-        return str (self.sede_id)
+        return str(str(self.sede_id)+" "+self.nombre)
+    #No se si aqui deberia haber una lista de las salas 
+    
   
