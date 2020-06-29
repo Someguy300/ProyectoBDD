@@ -1,13 +1,14 @@
 
 
 import React from 'react';
-
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import './Navbar.css';
 function Navbar() {
   return (
+    <Router>
     <div className="center-text">
     <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" link to="/">Metrocine</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -23,12 +24,14 @@ function Navbar() {
           <a class="nav-link" href="#">Estrenos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#">Tienda</a>
+         
+            <a class="nav-link" href="#" >Tienda</a>
         </li>
       </ul>
     </div>
   </nav>
   </div>
+  </Router>
 
   );
 }

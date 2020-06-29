@@ -1,11 +1,12 @@
 import React from 'react';
-import Navbar from '../Components/Navbar';
+
 import Footer from '../Components/Footer';
 import './Home.css';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 function Home() {
   return (
     <div>
-   <Navbar></Navbar>
+   
 
    <div className="slider">
         <h1 className="title">Estrenos</h1>
