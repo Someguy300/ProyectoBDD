@@ -3,6 +3,10 @@ import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import './Home.css';
 
+import { Col, Container, Row } from "reactstrap";
+
+
+
 
 function Home() {
   return (
