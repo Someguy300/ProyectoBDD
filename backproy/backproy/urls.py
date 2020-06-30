@@ -15,24 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.conf.urls import url, include
+from django.conf.urls import url, include, re_path
 from rest_framework import routers 
 from api import views
 
 
 
-router = routers.DefaultRouter()
-router.register(r'pelicula', views.PeliculaView)
-router.register(r'cliente', views.ClienteView)
-router.register(r'entrada', views.EntradaView)
-router.register(r'factura', views.FacturaView)
-router.register(r'producto', views.ProductoView)
-router.register(r'funcion', views.FuncionView)
-router.register(r'sala', views.SalaView)
-router.register(r'sede', views.SedeView)
+#router = routers.DefaultRouter()
+#router.register(r'pelicula', views.PeliculaView)
+#router.register(r'cliente', views.ClienteView)
+#router.register(r'entrada', views.EntradaView)
+#router.register(r'factura', views.FacturaView)
+#router.register(r'producto', views.ProductoView)
+#router.register(r'funcion', views.FuncionView)
+#router.register(r'sala', views.SalaView)
+#router.register(r'sede', views.SedeView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    re_path(r'^api/clientes/$', views.clientes_list),
+    re_path(r'^api/clientes/([0-9]+)$', views.clientes_detail),
 ]
