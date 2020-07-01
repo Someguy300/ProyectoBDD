@@ -1,27 +1,27 @@
 import React, { Component } from "react";
 import { Col, Container, Row } from "reactstrap";
-import ClienteList from "./ClienteList";
-import NewClienteModal from "./NewClienteModal";
+import PeliculasList from "./peliculas/PeliculasList";
+import NewPeliculaModal from "./peliculas/NewPeliculaModal";
 
 import axios from "axios";
 
-import { API_URL } from "../constants";
+import { API_URL_PE } from "../constants";
 
 class Peliculas extends Component {
   state = {
-    clientes: []
+    peliculas: []
   };
 
   componentDidMount() {
     this.resetState();
   }
 
-  getClientes = () => {
-    axios.get(API_URL).then(res => this.setState({ clientes: res.data }));
+  getPeliculas = () => {
+    axios.get(API_URL_PE).then(res => this.setState({ peliculas: res.data }));
   };
 
   resetState = () => {
-    this.getClientes();
+    this.getPeliculas();
   };
 
   render() {
@@ -29,15 +29,15 @@ class Peliculas extends Component {
       <Container style={{ marginTop: "20px" }}>
         <Row>
           <Col>
-            <ClienteList
-              clientes={this.state.clientes}
+            <PeliculasList
+              peliculas={this.state.peliculas}
               resetState={this.resetState}
             />
           </Col>
         </Row>
         <Row>
           <Col>
-            <NewClienteModal create={true} resetState={this.resetState} />
+            <NewPeliculaModal create={true} resetState={this.resetState} />
           </Col>
         </Row>
       </Container>
