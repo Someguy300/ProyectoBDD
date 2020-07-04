@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
-import NewClienteForm from "./NewClienteForm";
+import NewEntradaForm from "./NewEntradaForm";
 
-class NewClienteModal extends Component {
+class NewEntradaModal extends Component {
   state = {
     modal: false
   };
@@ -16,10 +16,10 @@ class NewClienteModal extends Component {
   render() {
     const create = this.props.create;
 
-    var title = "Editing Cliente";
+    var title = "Editing Entrada";
     var button = <Button onClick={this.toggle}>Edit</Button>;
     if (create) {
-      title = "Creating New Cliente";
+      title = "Creating New Entrada";
 
       button = (
         <Button
@@ -40,10 +40,10 @@ class NewClienteModal extends Component {
           <ModalHeader toggle={this.toggle}>{title}</ModalHeader>
 
           <ModalBody>
-            <NewClienteForm
+            <NewEntradaForm
               resetState={this.props.resetState}
               toggle={this.toggle}
-              cliente={this.props.cliente}
+              entrada={this.props.entrada}
             />
           </ModalBody>
         </Modal>
@@ -52,4 +52,4 @@ class NewClienteModal extends Component {
   }
 }
 
-export default NewClienteModal;
+export default NewEntradaModal;

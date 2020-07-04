@@ -4,43 +4,41 @@ import NewClienteModal from "./NewClienteModal";
 
 import ConfirmRemovalModal from "./ConfirmRemovalModal";
 
-class ClienteList extends Component {
+class SalasList extends Component {
   render() {
-    const clientes = this.props.clientes;
+    const salas = this.props.salas;
     return (
       <Table dark>
         <thead>
           <tr>
-            <th>nombre</th>
-            <th>cedula</th>
-            <th>apellido</th>
-            <th>correo</th>
+            <th>num_butacas</th>
+            <th>disponibilidad</th>
+            <th>sede_id</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          {!clientes || clientes.length <= 0 ? (
+          {!salas || salas.length <= 0 ? (
             <tr>
               <td colSpan="6" align="center">
                 <b>Ops, no one here yet</b>
               </td>
             </tr>
           ) : (
-            clientes.map(cliente => (
-              <tr key={cliente.cliente_id}>
-                <td>{cliente.nombre}</td>
-                <td>{cliente.cedula}</td>
-                <td>{cliente.apellido}</td>
-                <td>{cliente.correo}</td>
+            salas.map(sala => (
+              <tr key={sala.sala_id}>
+                <td>{sala.num_butacas}</td>
+                <td>{sala.disponibilidad}</td>
+                <td>{sala.sede_id}</td>
                 <td align="center">
                   <NewClienteModal
                     create={false}
-                    cliente={cliente}
+                    sala={sala}
                     resetState={this.props.resetState}
                   />
                   &nbsp;&nbsp;
                   <ConfirmRemovalModal
-                    cliente_id={cliente.cliente_id}
+                    sala_id={sala.sala_id}
                     resetState={this.props.resetState}
                   />
                 </td>
@@ -53,4 +51,4 @@ class ClienteList extends Component {
   }
 }
 
-export default ClienteList;
+export default SalasList;

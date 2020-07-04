@@ -1,46 +1,48 @@
 import React, { Component } from "react";
 import { Table } from "reactstrap";
-import NewClienteModal from "./NewClienteModal";
+import NewFacturaModal from "./NewFacturaModal";
 
 import ConfirmRemovalModal from "./ConfirmRemovalModal";
 
-class ClienteList extends Component {
+class FacturasList extends Component {
   render() {
-    const clientes = this.props.clientes;
+    const facturas = this.props.facturas;
     return (
       <Table dark>
         <thead>
           <tr>
-            <th>nombre</th>
-            <th>cedula</th>
-            <th>apellido</th>
-            <th>correo</th>
+            <th>sede_id</th>
+            <th>cliente_id</th>
+            <th>producto_id</th>
+            <th>fecha</th>
+            <th>met_pago</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          {!clientes || clientes.length <= 0 ? (
+          {!facturas || facturas.length <= 0 ? (
             <tr>
               <td colSpan="6" align="center">
                 <b>Ops, no one here yet</b>
               </td>
             </tr>
           ) : (
-            clientes.map(cliente => (
-              <tr key={cliente.cliente_id}>
-                <td>{cliente.nombre}</td>
-                <td>{cliente.cedula}</td>
-                <td>{cliente.apellido}</td>
-                <td>{cliente.correo}</td>
+            facturas.map(factura => (
+              <tr key={factura.num_factura}>
+                <td>{factura.sede_id}</td>
+                <td>{factura.cliente_id}</td>
+                <td>{factura.producto_id}</td>
+                <td>{factura.fecha}</td>
+                <td>{factura.met_pago}</td>
                 <td align="center">
-                  <NewClienteModal
+                  <NewFacturaModal
                     create={false}
-                    cliente={cliente}
+                    factura={factura}
                     resetState={this.props.resetState}
                   />
                   &nbsp;&nbsp;
                   <ConfirmRemovalModal
-                    cliente_id={cliente.cliente_id}
+                    num_factura={factura.num_factura}
                     resetState={this.props.resetState}
                   />
                 </td>
@@ -53,4 +55,4 @@ class ClienteList extends Component {
   }
 }
 
-export default ClienteList;
+export default FacturasList;
