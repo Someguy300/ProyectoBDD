@@ -51,7 +51,7 @@ class NewSalaForm extends React.Component {
         <FormGroup>
           <Label for="num_butacas">num_butacas:</Label>
           <Input
-            type="text"
+            type="number"
             name="num_butacas"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.num_butacas)}
@@ -60,7 +60,7 @@ class NewSalaForm extends React.Component {
         <FormGroup>
           <Label for="disponibilidad">disponibilidad:</Label>
           <Input
-            type="text"
+            type="number"
             name="disponibilidad"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.disponibilidad)}
@@ -69,7 +69,7 @@ class NewSalaForm extends React.Component {
         <FormGroup>
           <Label for="sede_id">sede_id:</Label>
           <Input
-            type="text"
+            type="number"
             name="sede_id"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.sede_id)}

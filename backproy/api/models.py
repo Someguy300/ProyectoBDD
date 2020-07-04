@@ -7,12 +7,18 @@ from multiselectfield import MultiSelectField
 
 # Create your models here.
 LENGUAJES=(('ES','Español'),('EN','Ingles'))
+
 GENEROS=(('AC','Accion'),('AV','Aventura'),('AN','Animacion')
     ,('CO','Comedia'),('DR','Drama'),('DO','Documental'),('HO','Horror')
-    ,('SU','Suspenso'),('AN','Animacion'))
+    ,('SU','Suspenso'))
+
 ESTADOS=(('PE','Por Estrenar'),('EC','En Cartelera'),('AR','Archivada'))
+
 METODOS_PAGO=(('EF','Efectivo'),('DE','Debito'),('CR','Credito'))
+
 TIPO_DULCES=(('DU','Dulce'),('SA','Salado'))
+
+
 class Pelicula(models.Model):
     pelicula_id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50,null=True)

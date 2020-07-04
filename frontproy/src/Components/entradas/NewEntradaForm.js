@@ -68,7 +68,7 @@ class NewEntradaForm extends React.Component {
         <FormGroup>
           <Label for="sala">sala:</Label>
           <Input
-            type="text"
+            type="number"
             name="sala"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.sala)}
@@ -77,7 +77,7 @@ class NewEntradaForm extends React.Component {
         <FormGroup>
           <Label for="funcion_id">funcion_id:</Label>
           <Input
-            type="text"
+            type="number"
             name="funcion_id"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.funcion_id)}
@@ -86,8 +86,8 @@ class NewEntradaForm extends React.Component {
         <FormGroup>
           <Label for="cliente_id">cliente_id:</Label>
           <Input
-            type="cliente_id"
-            name="text"
+            type="number"
+            name="cliente_id"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.cliente_id)}
           />
@@ -104,7 +104,7 @@ class NewEntradaForm extends React.Component {
         <FormGroup>
           <Label for="ent_compradas">ent_compradas:</Label>
           <Input
-            type="text"
+            type="number"
             name="ent_compradas"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.ent_compradas)}
@@ -122,7 +122,7 @@ class NewEntradaForm extends React.Component {
         <FormGroup>
           <Label for="horario">horario:</Label>
           <Input
-            type="text"
+            type="time"
             name="horario"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.horario)}
@@ -131,11 +131,14 @@ class NewEntradaForm extends React.Component {
         <FormGroup>
           <Label for="met_pago">met_pago:</Label>
           <Input
-            type="text"
+            type="select"
             name="met_pago"
             onChange={this.onChange}
-            value={this.defaultIfEmpty(this.state.met_pago)}
-          />
+            value={this.defaultIfEmpty(this.state.met_pago)}>
+              <option>EF</option>
+              <option>CR</option>
+              <option>DE</option>
+          </Input>
         </FormGroup>
         <Button>Send</Button>
       </Form>

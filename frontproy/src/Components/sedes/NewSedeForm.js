@@ -68,7 +68,7 @@ class NewSedeForm extends React.Component {
         <FormGroup>
           <Label for="nro_salas">nro_salas:</Label>
           <Input
-            type="text"
+            type="number"
             name="nro_salas"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.nro_salas)}

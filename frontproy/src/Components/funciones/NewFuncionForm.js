@@ -52,7 +52,7 @@ class NewFuncionForm extends React.Component {
         <FormGroup>
           <Label for="fecha">fecha:</Label>
           <Input
-            type="text"
+            type="date"
             name="fecha"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.fecha)}
@@ -61,7 +61,7 @@ class NewFuncionForm extends React.Component {
         <FormGroup>
           <Label for="horario">horario:</Label>
           <Input
-            type="text"
+            type="time"
             name="horario"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.horario)}
@@ -70,7 +70,7 @@ class NewFuncionForm extends React.Component {
         <FormGroup>
           <Label for="pelicula_id">pelicula_id:</Label>
           <Input
-            type="text"
+            type="number"
             name="pelicula_id"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.pelicula_id)}
@@ -79,7 +79,7 @@ class NewFuncionForm extends React.Component {
         <FormGroup>
           <Label for="sala_id">sala_id:</Label>
           <Input
-            type="text"
+            type="number"
             name="sala_id"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.sala_id)}

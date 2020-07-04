@@ -53,7 +53,7 @@ class NewFacturaForm extends React.Component {
         <FormGroup>
           <Label for="sede_id">sede_id:</Label>
           <Input
-            type="text"
+            type="number"
             name="sede_id"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.sede_id)}
@@ -62,7 +62,7 @@ class NewFacturaForm extends React.Component {
         <FormGroup>
           <Label for="cliente_id">cliente_id:</Label>
           <Input
-            type="text"
+            type="number"
             name="cliente_id"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.cliente_id)}
@@ -71,7 +71,7 @@ class NewFacturaForm extends React.Component {
         <FormGroup>
           <Label for="producto_id">producto_id:</Label>
           <Input
-            type="text"
+            type="number"
             name="producto_id"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.producto_id)}
@@ -80,7 +80,7 @@ class NewFacturaForm extends React.Component {
         <FormGroup>
           <Label for="fecha">fecha:</Label>
           <Input
-            type="text"
+            type="date"
             name="fecha"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.fecha)}
@@ -88,11 +88,14 @@ class NewFacturaForm extends React.Component {
         </FormGroup><FormGroup>
           <Label for="met_pago">met_pago:</Label>
           <Input
-            type="text"
+            type="select"
             name="met_pago"
             onChange={this.onChange}
-            value={this.defaultIfEmpty(this.state.met_pago)}
-          />
+            value={this.defaultIfEmpty(this.state.met_pago)}>
+              <option>EF</option>
+              <option>CR</option>
+              <option>DE</option>
+          </Input>
         </FormGroup>
         <Button>Send</Button>
       </Form>

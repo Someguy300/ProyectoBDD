@@ -59,7 +59,7 @@ class NewProductoForm extends React.Component {
         <FormGroup>
           <Label for="precio">precio:</Label>
           <Input
-            type="text"
+            type="number"
             name="precio"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.precio)}
@@ -68,11 +68,13 @@ class NewProductoForm extends React.Component {
         <FormGroup>
           <Label for="tipo">tipo:</Label>
           <Input
-            type="text"
+            type="select"
             name="tipo"
             onChange={this.onChange}
-            value={this.defaultIfEmpty(this.state.tipo)}
-          />
+            value={this.defaultIfEmpty(this.state.tipo)}>
+              <option>DU</option>
+              <option>SA</option>
+          </Input>
         </FormGroup>
         <Button>Send</Button>
       </Form>

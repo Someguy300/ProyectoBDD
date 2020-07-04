@@ -73,7 +73,7 @@ class NewPeliculaForm extends React.Component {
         <FormGroup>
           <Label for="fecha_estreno">fecha_estreno:</Label>
           <Input
-            type="text"
+            type="date"
             name="fecha_estreno"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.fecha_estreno)}
@@ -82,25 +82,36 @@ class NewPeliculaForm extends React.Component {
         <FormGroup>
           <Label for="estatus">estatus:</Label>
           <Input
-            type="text"
+            type="select"
             name="estatus"
             onChange={this.onChange}
-            value={this.defaultIfEmpty(this.state.estatus)}
-          />
+            value={this.defaultIfEmpty(this.state.estatus)}>
+              <option>PE</option>
+              <option>EC</option>
+              <option>AR</option>
+          </Input>
         </FormGroup>
         <FormGroup>
           <Label for="genero">genero:</Label>
           <Input
-            type="text"
+            type="select"
             name="genero"
             onChange={this.onChange}
-            value={this.defaultIfEmpty(this.state.genero)}
-          />
+            value={this.defaultIfEmpty(this.state.genero)}>
+              <option>AC</option>
+              <option>AV</option>
+              <option>AN</option>
+              <option>CO</option>
+              <option>DR</option>
+              <option>DO</option>
+              <option>HO</option>
+              <option>SU</option>
+          </Input>
         </FormGroup>
         <FormGroup>
           <Label for="duracion">duracion:</Label>
           <Input
-            type="text"
+            type="number"
             name="duracion"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.duracion)}
@@ -109,11 +120,13 @@ class NewPeliculaForm extends React.Component {
         <FormGroup>
           <Label for="lenguaje">lenguaje:</Label>
           <Input
-            type="text"
+            type="select"
             name="lenguaje"
             onChange={this.onChange}
-            value={this.defaultIfEmpty(this.state.lenguaje)}
-          />
+            value={this.defaultIfEmpty(this.state.lenguaje)}>
+              <option>ES</option>
+              <option>EN</option>
+          </Input>
         </FormGroup>
         <Button>Send</Button>
       </Form>
