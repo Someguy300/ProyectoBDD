@@ -7,6 +7,8 @@ import Peliculas from './Components/Peliculas';
 import Estrenos from './Components/Estrenos';
 import Tienda from './Components/Tienda';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 ReactDOM.render(
   <React.StrictMode>    
     <Router>
