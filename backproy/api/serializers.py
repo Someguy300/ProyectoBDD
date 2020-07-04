@@ -5,8 +5,6 @@ class PeliculaSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Pelicula 
         fields = ('__all__') 
-    genero = fields.MultipleChoiceField(choices=GENEROS,style={'base_template':'checkbox_multiple.html'})
-    lenguaje = fields.MultipleChoiceField(choices=LENGUAJES,style={'base_template':'checkbox_multiple.html'})
 
 class ClienteSerializer(serializers.ModelSerializer):
     
@@ -50,4 +48,16 @@ class SedeSerializer(serializers.ModelSerializer):
 
     class Meta: 
         model = Sede 
+        fields = ('__all__')
+
+class GeneroSerializer(serializers.ModelSerializer):
+
+    class Meta: 
+        model = Genero 
+        fields = ('__all__')
+    
+class LenguajeSerializer(serializers.ModelSerializer):
+
+    class Meta: 
+        model = Lenguaje 
         fields = ('__all__')

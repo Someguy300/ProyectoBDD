@@ -310,3 +310,77 @@ def sedes_detail(request, sede_id):
     elif request.method == 'DELETE':
         sede.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+###########GENERO#################
+
+@api_view(['GET', 'POST'])
+def generos_list(request):
+    if request.method == 'GET':
+        data = Genero.objects.all()
+
+        serializer = GeneroSerializer(data, context={'request': request}, many=True)
+
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = GeneroSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=status.HTTP_201_CREATED)
+            
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PUT', 'DELETE'])
+def generos_detail(request, id_genero):
+    try:
+        genero = Genero.objects.get(id_genero=id_genero)
+    except Funcion.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'PUT':
+        serializer = GeneroSerializer(genero, data=request.data,context={'request': request})
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        genero.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+###########Lenguaje#################
+
+@api_view(['GET', 'POST'])
+def lenguajes_list(request):
+    if request.method == 'GET':
+        data = Lenguaje.objects.all()
+
+        serializer = LenguajeSerializer(data, context={'request': request}, many=True)
+
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = LenguajeSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=status.HTTP_201_CREATED)
+            
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PUT', 'DELETE'])
+def lenguajes_detail(request, id_lenguaje):
+    try:
+        lenguaje = Lenguaje.objects.get(id_lenguaje=id_lenguaje)
+    except Funcion.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'PUT':
+        serializer = LenguajeSerializer(lenguaje, data=request.data,context={'request': request})
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        lenguaje.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

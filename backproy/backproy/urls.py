@@ -57,4 +57,10 @@ urlpatterns = [
 
     re_path(r'^api/sedes/$', views.salas_list),
     re_path(r'^api/sedes/([0-9]+)$', views.sedes_detail),
+
+    re_path(r'^api/generos/$', views.generos_list),
+    re_path(r'^api/generos/([0-9]+)$', views.generos_detail),
+
+    re_path(r'^api/lenguajes/$', views.lenguajes_list),
+    re_path(r'^api/lenguajes/([0-9]+)$', views.lenguajes_detail),
 ]

@@ -98,14 +98,14 @@ class NewPeliculaForm extends React.Component {
             name="genero"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.genero)}>
-              <option>AC</option>
-              <option>AV</option>
-              <option>AN</option>
-              <option>CO</option>
-              <option>DR</option>
-              <option>DO</option>
-              <option>HO</option>
-              <option>SU</option>
+              <option>Accion</option>
+              <option>Aventura</option>
+              <option>Animada</option>
+              <option>Comedia</option>
+              <option>Drama</option>
+              <option>Documental</option>
+              <option>Horror</option>
+              <option>Suspenso</option>
           </Input>
         </FormGroup>
         <FormGroup>
@@ -124,8 +124,8 @@ class NewPeliculaForm extends React.Component {
             name="lenguaje"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.lenguaje)}>
-              <option>ES</option>
-              <option>EN</option>
+              <option>Español</option>
+              <option>Ingles</option>
           </Input>
         </FormGroup>
         <Button>Send</Button>

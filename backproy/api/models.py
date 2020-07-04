@@ -6,11 +6,6 @@ from django.core.validators import MinValueValidator
 from multiselectfield import MultiSelectField
 
 # Create your models here.
-LENGUAJES=(('ES','Español'),('EN','Ingles'))
-
-GENEROS=(('AC','Accion'),('AV','Aventura'),('AN','Animacion')
-    ,('CO','Comedia'),('DR','Drama'),('DO','Documental'),('HO','Horror')
-    ,('SU','Suspenso'))
 
 ESTADOS=(('PE','Por Estrenar'),('EC','En Cartelera'),('AR','Archivada'))
 
@@ -25,9 +20,9 @@ class Pelicula(models.Model):
     sinopsis = models.TextField(max_length=100)
     fecha_estreno = models.DateField()
     estatus = models.CharField(max_length=2,choices=ESTADOS,null=True)
-    genero = MultiSelectField(choices=GENEROS,null=True)
+    genero = models.ManyToManyField('Genero')
     duracion = models.PositiveIntegerField()
-    lenguaje = MultiSelectField(choices=LENGUAJES,null=True)
+    lenguaje = models.ManyToManyField('Lenguaje')
     def __str__(self):
         return str (str(self.pelicula_id)+" "+self.nombre)
 
@@ -107,7 +102,18 @@ class Sede(models.Model):
     ubicacion = models.CharField(max_length=100)
     nro_salas=models.PositiveIntegerField(null=True, default =0)
     def __str__(self):
-        return str(str(self.sede_id)+" "+self.nombre)
+        return str(self.nombre)
     #No se si aqui deberia haber una lista de las salas 
     
   
+class Genero(models.Model):
+    id_genero = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=50) 
+    def __str__(self):
+        return str(self.nombre)
+
+class Lenguaje(models.Model):
+    id_lenguaje = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=50) 
+    def __str__(self):
+        return str(self.nombre)
