@@ -5,23 +5,24 @@ import axios from "axios";
 
 import { API_URL_PE } from "../../constants";
 
+
 class NewPeliculaForm extends React.Component {
   state = {
     pelicula_id: 0,
     nombre: "",
     sinopsis: "",
-    fecha_estreno: "",
     estatus: "",
     genero:"",
     duracion:"",
     lenguaje:"",
+    fecha_estreno: ""
     
   };
 
   componentDidMount() {
     if (this.props.pelicula) {
-      const { pelicula_id, nombre, sinopsis, fecha_estreno, estatus, genero, duracion, lenguaje} = this.props.pelicula;
-      this.setState({ pelicula_id, nombre, sinopsis, fecha_estreno, estatus, genero, duracion, lenguaje});
+      const { pelicula_id, nombre, sinopsis, estatus, genero, duracion, lenguaje, fecha_estreno} = this.props.pelicula;
+      this.setState({ pelicula_id, nombre, sinopsis,  estatus, genero, duracion, lenguaje, fecha_estreno});
     }
   }
 
@@ -71,15 +72,6 @@ class NewPeliculaForm extends React.Component {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="fecha_estreno">fecha_estreno:</Label>
-          <Input
-            type="date"
-            name="fecha_estreno"
-            onChange={this.onChange}
-            value={this.defaultIfEmpty(this.state.fecha_estreno)}
-          />
-        </FormGroup>
-        <FormGroup>
           <Label for="estatus">estatus:</Label>
           <Input
             type="select"
@@ -98,14 +90,9 @@ class NewPeliculaForm extends React.Component {
             name="genero"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.genero)}>
-              <option>Accion</option>
-              <option>Aventura</option>
-              <option>Animada</option>
-              <option>Comedia</option>
-              <option>Drama</option>
-              <option>Documental</option>
-              <option>Horror</option>
-              <option>Suspenso</option>
+              <option>AC</option>
+              <option>AV</option>
+              <option>AN</option>
           </Input>
         </FormGroup>
         <FormGroup>
@@ -124,8 +111,18 @@ class NewPeliculaForm extends React.Component {
             name="lenguaje"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.lenguaje)}>
-              <option>Español</option>
-              <option>Ingles</option>
+              <option>EN</option>
+              <option>ES</option>
+              <option>JP</option>
+          </Input>
+        </FormGroup>
+        <FormGroup>
+          <Label for="fecha_estreno">fecha_estreno:</Label>
+          <Input
+            type="date"
+            name="fecha_estreno"
+            onChange={this.onChange}
+            value={this.defaultIfEmpty(this.state.fecha_estreno)}>
           </Input>
         </FormGroup>
         <Button>Send</Button>

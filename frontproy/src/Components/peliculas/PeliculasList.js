@@ -13,11 +13,11 @@ class PeliculasList extends Component {
           <tr>
             <th>nombre</th>
             <th>sinopsis</th>
-            <th>fecha_estreno</th>
             <th>estatus</th>
             <th>genero</th>
             <th>duracion</th>
             <th>lenguaje</th>
+            <th>fecha_estreno</th>
             <th></th>
           </tr>
         </thead>
@@ -33,11 +33,11 @@ class PeliculasList extends Component {
               <tr key={pelicula.pelicula_id}>
                 <td>{pelicula.nombre}</td>
                 <td>{pelicula.sinopsis}</td>
-                <td>{pelicula.fecha_estreno}</td>
                 <td>{pelicula.estatus}</td>
                 <td>{pelicula.genero}</td>
                 <td>{pelicula.duracion}</td>
                 <td>{pelicula.lenguaje}</td>
+                <td>{pelicula.fecha_estreno}</td>
                 <td align="center">
                   <NewPeliculaModal
                     create={false}

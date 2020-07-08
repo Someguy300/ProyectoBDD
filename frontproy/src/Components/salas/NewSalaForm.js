@@ -1,4 +1,4 @@
-import React from "react";
+import React  from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 
 import axios from "axios";
@@ -11,8 +11,9 @@ class NewSalaForm extends React.Component {
     num_butacas: "",
     disponibilidad: "",
     sede_id: "",
-    
   };
+
+  
 
   componentDidMount() {
     if (this.props.sala) {
@@ -46,6 +47,7 @@ class NewSalaForm extends React.Component {
   };
 
   render() {
+    
     return (
       <Form onSubmit={this.props.sala ? this.editSala : this.createSala}>
         <FormGroup>
@@ -69,11 +71,11 @@ class NewSalaForm extends React.Component {
         <FormGroup>
           <Label for="sede_id">sede_id:</Label>
           <Input
-            type="number"
+            type="select"
             name="sede_id"
             onChange={this.onChange}
-            value={this.defaultIfEmpty(this.state.sede_id)}
-          />
+            value={this.defaultIfEmpty(this.state.sede_id)}>
+          </Input>
         </FormGroup>
         <Button>Send</Button>
       </Form>
@@ -82,3 +84,6 @@ class NewSalaForm extends React.Component {
 }
 
 export default NewSalaForm;
+
+
+

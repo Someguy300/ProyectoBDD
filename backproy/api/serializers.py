@@ -50,14 +50,4 @@ class SedeSerializer(serializers.ModelSerializer):
         model = Sede 
         fields = ('__all__')
 
-class GeneroSerializer(serializers.ModelSerializer):
 
-    class Meta: 
-        model = Genero 
-        fields = ('__all__')
-    
-class LenguajeSerializer(serializers.ModelSerializer):
-
-    class Meta: 
-        model = Lenguaje 
-        fields = ('__all__')

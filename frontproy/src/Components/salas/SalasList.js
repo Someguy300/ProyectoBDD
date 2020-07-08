@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Table } from "reactstrap";
-import NewClienteModal from "./NewClienteModal";
+import NewSalaModal from "./NewSalaModal";
 
 import ConfirmRemovalModal from "./ConfirmRemovalModal";
 
@@ -31,7 +31,7 @@ class SalasList extends Component {
                 <td>{sala.disponibilidad}</td>
                 <td>{sala.sede_id}</td>
                 <td align="center">
-                  <NewClienteModal
+                  <NewSalaModal
                     create={false}
                     sala={sala}
                     resetState={this.props.resetState}

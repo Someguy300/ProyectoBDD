@@ -13,10 +13,10 @@ class EntradaList extends Component {
           <tr>
             <th>pelicula</th>
             <th>sala</th>
-            <th>apellido</th>
             <th>funcion_id</th>
             <th>cliente_id</th>
             <th>ent_compradas</th>
+            <th>precio</th>
             <th>fecha</th>
             <th>horario</th>
             <th>met_pago</th>

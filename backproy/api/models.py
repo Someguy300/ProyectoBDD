@@ -3,11 +3,14 @@ from datetime import date
 from django.utils import timezone
 from decimal import Decimal
 from django.core.validators import MinValueValidator
-from multiselectfield import MultiSelectField
 
 # Create your models here.
 
-ESTADOS=(('PE','Por Estrenar'),('EC','En Cartelera'),('AR','Archivada'))
+GENEROS=(('AC','Accion'),('AV','Aventura'),('AN','Animada'))
+
+LENGUAJES=(('ES','Español'),('EN','Imgles'),('JP','Japones'))
+
+ESTADOS=(('PE','PE'),('EC','EC'),('AR','AR'))
 
 METODOS_PAGO=(('EF','Efectivo'),('DE','Debito'),('CR','Credito'))
 
@@ -17,12 +20,12 @@ TIPO_DULCES=(('DU','Dulce'),('SA','Salado'))
 class Pelicula(models.Model):
     pelicula_id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50,null=True)
-    sinopsis = models.TextField(max_length=100)
-    fecha_estreno = models.DateField()
+    sinopsis = models.CharField(max_length=100)
     estatus = models.CharField(max_length=2,choices=ESTADOS,null=True)
-    genero = models.ManyToManyField('Genero')
-    duracion = models.PositiveIntegerField()
-    lenguaje = models.ManyToManyField('Lenguaje')
+    genero = models.CharField(max_length=2,choices=GENEROS,null=True)
+    duracion = models.PositiveIntegerField(blank=True, null=False, default ='1')
+    lenguaje = models.CharField(max_length=2,choices=LENGUAJES,null=True)
+    fecha_estreno = models.DateField()
     def __str__(self):
         return str (str(self.pelicula_id)+" "+self.nombre)
 
@@ -84,7 +87,7 @@ class Funcion(models.Model):
     sala_id = models.ForeignKey(
         'Sala', on_delete= models.SET_NULL, null=True, default=1)
     def __str__(self):
-        return str (str(self.id_funcion)+" Peli_id:"+str(self.pelicula_id)+" Sala_id:"+str(self.sala_id))
+        return str (str(self.id_funcion))
 
 
 class Sala(models.Model):
@@ -94,7 +97,7 @@ class Sala(models.Model):
     sede_id = models.ForeignKey(
         'Sede', on_delete= models.SET_NULL, null=True, default=1)
     def __str__(self):
-        return str (str(self.sala_id)+" Sede_id:"+self.sede.id)
+        return str (str(self.sala_id))
 
 class Sede(models.Model):
     sede_id = models.AutoField(primary_key=True)
@@ -106,14 +109,3 @@ class Sede(models.Model):
     #No se si aqui deberia haber una lista de las salas 
     
   
-class Genero(models.Model):
-    id_genero = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=50) 
-    def __str__(self):
-        return str(self.nombre)
-
-class Lenguaje(models.Model):
-    id_lenguaje = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=50) 
-    def __str__(self):
-        return str(self.nombre)
