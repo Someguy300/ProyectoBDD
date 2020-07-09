@@ -1,9 +1,10 @@
-import React  from "react";
-import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import React ,{useEffect} from "react";
+import { Button, Form, FormGroup, Input, Label, } from "reactstrap";
 
 import axios from "axios";
 
 import { API_URL_SA } from "../../constants";
+import { API_URL_SE } from "../../constants";
 
 class NewSalaForm extends React.Component {
   state = {
@@ -19,6 +20,8 @@ class NewSalaForm extends React.Component {
     if (this.props.sala) {
       const { sala_id, num_butacas, disponibilidad, sede_id } = this.props.sala;
       this.setState({ sala_id, num_butacas, disponibilidad, sede_id });
+
+     
     }
   }
 
@@ -40,6 +43,7 @@ class NewSalaForm extends React.Component {
       this.props.resetState();
       this.props.toggle();
     });
+    
   };
 
   defaultIfEmpty = value => {
@@ -47,7 +51,6 @@ class NewSalaForm extends React.Component {
   };
 
   render() {
-    
     return (
       <Form onSubmit={this.props.sala ? this.editSala : this.createSala}>
         <FormGroup>
@@ -68,6 +71,7 @@ class NewSalaForm extends React.Component {
             value={this.defaultIfEmpty(this.state.disponibilidad)}
           />
         </FormGroup>
+        
         <FormGroup>
           <Label for="sede_id">sede_id:</Label>
           <Input
