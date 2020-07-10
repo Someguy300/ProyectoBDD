@@ -33,6 +33,12 @@ class ProductoSerializer(serializers.ModelSerializer):
         model = Producto 
         fields = ('__all__') 
 
+class Factura_productoSerializer(serializers.ModelSerializer):
+
+    class Meta: 
+        model = Factura_producto
+        fields = ('__all__') 
+
 class FuncionSerializer(serializers.ModelSerializer):
 
     class Meta: 

@@ -9,7 +9,7 @@ function Home() {
    
 
    <div className="slider">
-        <h1 className="title">YO SI PUEDO</h1>
+        <h1 className="title">Estrenos</h1>
           <ul>
                <li> <img src="../Avengers.png"  width="60%" height="80%"   /> </li>
 
