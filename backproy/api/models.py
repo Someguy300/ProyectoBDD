@@ -81,10 +81,8 @@ class Producto(models.Model):
 
 class Factura_producto(models.Model):
     num_relacion = models.AutoField(primary_key=True)
-    num_factura = models.ForeignKey(
-        'Factura', on_delete= models.SET_NULL, null=True, default=1)
-    product_id = models.ForeignKey(
-        'Producto', on_delete= models.SET_NULL, null=True, default=1)
+    num_factura = models.ForeignKey('Factura', on_delete= models.SET_NULL, null=True, default=1)
+    product_id = models.ForeignKey('Producto', on_delete= models.SET_NULL, null=True, default=1)
        
     
 

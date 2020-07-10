@@ -3,7 +3,7 @@ import { Modal, ModalHeader, Button, ModalFooter } from "reactstrap";
 
 import axios from "axios";
 
-import { API_URL } from "../../constants";
+import { API_URL_SE } from "../../constants";
 
 class ConfirmRemovalModal extends Component {
   state = {
@@ -16,8 +16,8 @@ class ConfirmRemovalModal extends Component {
     }));
   };
 
-  deleteCliente = cliente_id => {
-    axios.delete(API_URL + cliente_id).then(() => {
+  deleteSede = sede_id => {
+    axios.delete(API_URL_SE + sede_id).then(() => {
       this.props.resetState();
       this.toggle();
     });
@@ -41,7 +41,7 @@ class ConfirmRemovalModal extends Component {
             <Button
               type="button"
               color="primary"
-              onClick={() => this.deleteCliente(this.props.cliente_id)}
+              onClick={() => this.deleteSede(this.props.sede_id)}
             >
               Yes
             </Button>

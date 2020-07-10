@@ -3,7 +3,7 @@ import { Modal, ModalHeader, Button, ModalFooter } from "reactstrap";
 
 import axios from "axios";
 
-import { API_URL } from "../../constants";
+import { API_URL_FU } from "../../constants";
 
 class ConfirmRemovalModal extends Component {
   state = {
@@ -16,8 +16,8 @@ class ConfirmRemovalModal extends Component {
     }));
   };
 
-  deleteCliente = cliente_id => {
-    axios.delete(API_URL + cliente_id).then(() => {
+  deleteFuncion = id_funcion => {
+    axios.delete(API_URL_FU + id_funcion).then(() => {
       this.props.resetState();
       this.toggle();
     });
@@ -31,7 +31,7 @@ class ConfirmRemovalModal extends Component {
         </Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>
-            Do you really wanna delete the cliente?
+            Do you really wanna delete the funcion?
           </ModalHeader>
 
           <ModalFooter>
@@ -41,7 +41,7 @@ class ConfirmRemovalModal extends Component {
             <Button
               type="button"
               color="primary"
-              onClick={() => this.deleteCliente(this.props.cliente_id)}
+              onClick={() => this.deleteFuncion(this.props.id_funcion)}
             >
               Yes
             </Button>

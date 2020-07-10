@@ -1,46 +1,44 @@
 import React, { Component } from "react";
 import { Table } from "reactstrap";
-import NewClienteModal from "./NewClienteModal";
+import NewSedeModal from "./NewSedeModal";
 
 import ConfirmRemovalModal from "./ConfirmRemovalModal";
 
-class ClienteList extends Component {
+class SedesList extends Component {
   render() {
-    const clientes = this.props.clientes;
+    const sedes = this.props.sedes;
     return (
       <Table dark>
         <thead>
           <tr>
             <th>nombre</th>
-            <th>cedula</th>
-            <th>apellido</th>
-            <th>correo</th>
+            <th>ubicacion</th>
+            <th>nro_salas</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          {!clientes || clientes.length <= 0 ? (
+          {!sedes || sedes.length <= 0 ? (
             <tr>
               <td colSpan="6" align="center">
                 <b>Ops, no one here yet</b>
               </td>
             </tr>
           ) : (
-            clientes.map(cliente => (
-              <tr key={cliente.cliente_id}>
-                <td>{cliente.nombre}</td>
-                <td>{cliente.cedula}</td>
-                <td>{cliente.apellido}</td>
-                <td>{cliente.correo}</td>
+            sedes.map(sede => (
+              <tr key={sede.sede_id}>
+                <td>{sede.nombre}</td>
+                <td>{sede.ubicacion}</td>
+                <td>{sede.nro_salas}</td>
                 <td align="center">
-                  <NewClienteModal
+                  <NewSedeModal
                     create={false}
-                    cliente={cliente}
+                    sede={sede}
                     resetState={this.props.resetState}
                   />
                   &nbsp;&nbsp;
                   <ConfirmRemovalModal
-                    cliente_id={cliente.cliente_id}
+                    sede_id={sede.sede_id}
                     resetState={this.props.resetState}
                   />
                 </td>
@@ -53,4 +51,4 @@ class ClienteList extends Component {
   }
 }
 
-export default ClienteList;
+export default SedesList;

@@ -57,4 +57,5 @@ urlpatterns = [
 
     re_path(r'^api/sedes/$', views.salas_list),
     re_path(r'^api/sedes/([0-9]+)$', views.sedes_detail),
+
 ]

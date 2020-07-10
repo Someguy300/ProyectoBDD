@@ -315,3 +315,4 @@ def sedes_detail(request, sede_id):
     elif request.method == 'DELETE':
         sede.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+

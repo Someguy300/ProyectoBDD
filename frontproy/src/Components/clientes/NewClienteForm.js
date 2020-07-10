@@ -61,7 +61,7 @@ class NewClienteForm extends React.Component {
         <FormGroup>
           <Label for="cedula">cedula:</Label>
           <Input
-            type="text"
+            type="number"
             name="cedula"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.cedula)}

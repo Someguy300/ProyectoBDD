@@ -1,46 +1,46 @@
 import React, { Component } from "react";
 import { Table } from "reactstrap";
-import NewClienteModal from "./NewClienteModal";
+import NewFuncionModal from "./NewFuncionModal";
 
 import ConfirmRemovalModal from "./ConfirmRemovalModal";
 
-class ClienteList extends Component {
+class FuncionesList extends Component {
   render() {
-    const clientes = this.props.clientes;
+    const funciones = this.props.funciones;
     return (
       <Table dark>
         <thead>
           <tr>
-            <th>nombre</th>
-            <th>cedula</th>
-            <th>apellido</th>
-            <th>correo</th>
+            <th>fecha</th>
+            <th>horario</th>
+            <th>pelicula_id</th>
+            <th>sala_id</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          {!clientes || clientes.length <= 0 ? (
+          {!funciones || funciones.length <= 0 ? (
             <tr>
               <td colSpan="6" align="center">
                 <b>Ops, no one here yet</b>
               </td>
             </tr>
           ) : (
-            clientes.map(cliente => (
-              <tr key={cliente.cliente_id}>
-                <td>{cliente.nombre}</td>
-                <td>{cliente.cedula}</td>
-                <td>{cliente.apellido}</td>
-                <td>{cliente.correo}</td>
+            funciones.map(funcion => (
+              <tr key={funcion.id_funcion}>
+                <td>{funcion.fecha}</td>
+                <td>{funcion.horario}</td>
+                <td>{funcion.pelicula_id}</td>
+                <td>{funcion.sala_id}</td>
                 <td align="center">
-                  <NewClienteModal
+                  <NewFuncionModal
                     create={false}
-                    cliente={cliente}
+                    funcion={funcion}
                     resetState={this.props.resetState}
                   />
                   &nbsp;&nbsp;
                   <ConfirmRemovalModal
-                    cliente_id={cliente.cliente_id}
+                    id_funcion={funcion.id_funcion}
                     resetState={this.props.resetState}
                   />
                 </td>
@@ -53,4 +53,4 @@ class ClienteList extends Component {
   }
 }
 
-export default ClienteList;
+export default FuncionesList;
