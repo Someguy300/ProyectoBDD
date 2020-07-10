@@ -198,6 +198,11 @@ def productos_detail(request, product_id):
         producto.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+#view relacion
+class Factura_productoView(viewsets.ModelViewSet):
+    queryset = Factura_producto.objects.all()
+    serializer_class = Factura_productoSerializer
+
 
 ########FUNCION########
 
