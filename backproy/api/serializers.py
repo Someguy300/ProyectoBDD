@@ -24,6 +24,11 @@ class FacturaSerializer(serializers.ModelSerializer):
         model = Factura 
         fields = ('__all__') 
     
+class Factura_entradaSerializer(serializers.ModelSerializer):
+
+    class Meta: 
+        model = Factura_entrada
+        fields = ('__all__') 
 
 class ProductoSerializer(serializers.ModelSerializer):
 
@@ -43,17 +48,22 @@ class FuncionSerializer(serializers.ModelSerializer):
         model = Funcion 
         fields = ('__all__') 
 
-
 class SalaSerializer(serializers.ModelSerializer):
 
     class Meta: 
         model = Sala 
         fields = ('__all__') 
 
+ 
 class SedeSerializer(serializers.ModelSerializer):
 
     class Meta: 
         model = Sede 
         fields = ('__all__')
+        
+class Sede_productoSerializer(serializers.ModelSerializer):
 
+    class Meta: 
+        model = Sede_producto
+        fields = ('__all__') 
 
