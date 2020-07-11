@@ -12,8 +12,8 @@ GENEROS=(('AC','Accion'),('AV','Aventura'),('AN','Animacion')
     ,('SU','Suspenso'),('AN','Animacion'))
 ESTADOS=(('PE','Por Estrenar'),('EC','En Cartelera'),('AR','Archivada'))
 METODOS_PAGO=(('EF','Efectivo'),('DE','Debito'),('CR','Credito'))
-TIPO_DULCES=(('DU','Dulce'),('SA','Salado'))
-
+TIPO_DULCES=(('DU','Dulce'),('SA','Salado'),('BE','Bebida'))
+HORARIOS= (('10','10:00 am'),('12','12:00 pm'),('2','2:00 pm'),('4','4:00 pm'),('6','6:00 pm'),('8','8:00 pm'))
 
 class Pelicula(models.Model):
     pelicula_id = models.AutoField(primary_key=True)
@@ -29,10 +29,10 @@ class Pelicula(models.Model):
 
 class Cliente(models.Model):
     cliente_id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=20, null=False)
+    nombre = models.CharField(max_length=40, null=False)
+    apellido = models.CharField(max_length=40, null=False)
     cedula = models.PositiveIntegerField(blank=True, null=True, default ='1')
-    apellido = models.TextField(max_length=20, null=False)
-    correo = models.CharField(max_length=20, null=False)
+    correo = models.CharField(max_length=50, null=False)
     def __str__(self):
         return str (str(self.cliente_id)+" "+self.nombre+" CI:"+str(self.cedula))
     
@@ -40,8 +40,8 @@ class Entrada(models.Model):
     num_entrada = models.AutoField(primary_key=True)
     #La pelicula y la sala no se pueden sacar de la funcion?
     #pelicula = models.CharField(max_length=50,null=True)
-    pelicula_id = models.ForeignKey(
-        'Pelicula', on_delete= models.SET_NULL, null=True, default=1)
+    #pelicula_id = models.ForeignKey(
+    #   'Pelicula', on_delete= models.SET_NULL, null=True, default=1)
     #sala = models.PositiveIntegerField(null=True, default =0)
     funcion_id = models.ForeignKey(
         'Funcion', on_delete= models.SET_NULL, null=True, default=1)
@@ -50,9 +50,8 @@ class Entrada(models.Model):
     precio = models.PositiveIntegerField(null=True, default =0)
     #no me cuadra lo de entradas compradas 
     #ent_compradas = models.PositiveIntegerField(null=True, default =0)
-    #lo mismo con fecha y horario
-    fecha = models.DateField( null=False)
-    horario = models.TimeField( null=False)
+    #lo mismo con fecha y horario   
+    #horario = models.TimeField( null=False)
     #met_pago = models.CharField(max_length=2, default= ('EF','Efectivo'), choices=METODOS_PAGO,null=False)
     def __str__(self):
         return str (str(self.num_entrada))
@@ -66,10 +65,17 @@ class Factura(models.Model):
         'Cliente', on_delete= models.SET_NULL, null=True, default=1)
     #producto_id = models.ManyToManyField('Producto')
     fecha = models.DateTimeField(null=False)
+    hora = models.TimeField( default=timezone.now ,null=False)
     met_pago = models.CharField(max_length=2, default= "Efectivo" , choices=METODOS_PAGO,null=False)
     def __str__(self):
         return str (self.num_factura)
 
+class Factura_entrada(models.Model):
+    num_relacion = models.AutoField(primary_key=True)
+    num_factura = models.ForeignKey('Factura', on_delete= models.SET_NULL, null=True, default=1)
+    num_entrada = models.ForeignKey('Entrada', on_delete= models.SET_NULL, null=True, default=1)
+    def __str__(self):
+        return str (str(self.num_relacion)) 
 
 class Producto(models.Model):
     product_id =  models.AutoField(primary_key=True)
@@ -83,13 +89,17 @@ class Factura_producto(models.Model):
     num_relacion = models.AutoField(primary_key=True)
     num_factura = models.ForeignKey('Factura', on_delete= models.SET_NULL, null=True, default=1)
     product_id = models.ForeignKey('Producto', on_delete= models.SET_NULL, null=True, default=1)
-       
+    sede_id = models.ForeignKey(
+        'Sede', on_delete= models.SET_NULL, null=True, default=1)
+    def __str__(self):
+        return str (str(self.num_relacion)) 
     
+
 
 class Funcion(models.Model):
     id_funcion =  models.AutoField(primary_key=True)
-    fecha = models.DateField(null=False)
-    horario = models.TimeField(null=False)
+    fecha_funcion = models.DateField(null=False)
+    horario = models.CharField(max_length=4, default= ('10','10:00 am'), choices=HORARIOS,null=False)
     pelicula_id = models.ForeignKey(
         'Pelicula', on_delete= models.SET_NULL, null=True, default=1)
     sala_id = models.ForeignKey(
@@ -112,8 +122,9 @@ class Sede(models.Model):
     nombre = models.CharField(max_length=20, null=False)    
     ubicacion = models.CharField(max_length=20, null=False)
     nro_salas=models.PositiveIntegerField(null=True, default =0)
+    producto_id = models.ManyToManyField('Producto')
     def __str__(self):
-        return str(str(self.sede_id)+" "+self.nombre)
+        return str(self.nombre+" "+self.ubicacion)
     #No se si aqui deberia haber una lista de las salas 
     
   
