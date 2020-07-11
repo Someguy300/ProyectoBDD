@@ -55,7 +55,7 @@ class Entrada(models.Model):
     horario = models.TimeField( null=False)
     #met_pago = models.CharField(max_length=2, default= ('EF','Efectivo'), choices=METODOS_PAGO,null=False)
     def __str__(self):
-        return str (str(self.num_entrada)+" "+self.pelicula)
+        return str (str(self.num_entrada))
 
 class Factura(models.Model):
     #Averiguar como meter los productos aqui9
@@ -95,7 +95,7 @@ class Funcion(models.Model):
     sala_id = models.ForeignKey(
         'Sala', on_delete= models.SET_NULL, null=True, default=1)
     def __str__(self):
-        return str (str(self.id_funcion)+" Peli_id:"+str(self.pelicula_id)+" Sala_id:"+str(self.sala_id))
+        return str (str(self.id_funcion))
 
 
 class Sala(models.Model):
@@ -105,7 +105,7 @@ class Sala(models.Model):
     sede_id = models.ForeignKey(
         'Sede', on_delete= models.SET_NULL, null=True, default=1)
     def __str__(self):
-        return str (str(self.sala_id)+" Sede_id:"+self.sede.id)
+        return str (str(self.sala_id))
 
 class Sede(models.Model):
     sede_id = models.AutoField(primary_key=True)
