@@ -79,23 +79,13 @@ class Factura_entrada(models.Model):
 
 class Producto(models.Model):
     product_id =  models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=50,null=False, default="Producto0")
+    nombre = models.CharField(max_length=50,null=False, default="Producto")
     precio = models.DecimalField(decimal_places=2, max_digits=10, validators=[MinValueValidator(Decimal('0.01'))])
     tipo = models.CharField(max_length=2, default= ('DU','Dulce'), choices=TIPO_DULCES,null= False)
     def __str__(self):
         return str (str(self.product_id)+" "+self.nombre)
 
-class Factura_producto(models.Model):
-    num_relacion = models.AutoField(primary_key=True)
-    num_factura = models.ForeignKey('Factura', on_delete= models.SET_NULL, null=True, default=1)
-    product_id = models.ForeignKey('Producto', on_delete= models.SET_NULL, null=True, default=1)
-    sede_id = models.ForeignKey(
-        'Sede', on_delete= models.SET_NULL, null=True, default=1)
-    def __str__(self):
-        return str (str(self.num_relacion)) 
     
-
-
 class Funcion(models.Model):
     id_funcion =  models.AutoField(primary_key=True)
     fecha_funcion = models.DateField(null=False)
@@ -122,9 +112,30 @@ class Sede(models.Model):
     nombre = models.CharField(max_length=20, null=False)    
     ubicacion = models.CharField(max_length=20, null=False)
     nro_salas=models.PositiveIntegerField(null=True, default =0)
-    producto_id = models.ManyToManyField('Producto')
     def __str__(self):
         return str(self.nombre+" "+self.ubicacion)
     #No se si aqui deberia haber una lista de las salas 
     
-  
+class Producto(models.Model):
+    product_id =  models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=50,null=False, default="Producto")
+    precio = models.DecimalField(decimal_places=2, max_digits=10, validators=[MinValueValidator(Decimal('0.01'))])
+    tipo = models.CharField(max_length=2, default= ('DU','Dulce'), choices=TIPO_DULCES,null= False)
+    def __str__(self):
+        return str (str(self.product_id)+" "+self.nombre)
+
+class Sede_producto(models.Model):
+    num_relacion = models.AutoField(primary_key=True)
+    sede_id = models.ForeignKey('Sede', on_delete= models.SET_NULL, null=True, default=1)
+    product_id = models.ForeignKey('Producto', on_delete= models.SET_NULL, null=True, default=1)
+    def __str__(self):
+        return str (str(self.num_relacion)) 
+
+class Factura_producto(models.Model):
+    num_relacion = models.AutoField(primary_key=True)
+    num_factura = models.ForeignKey('Factura', on_delete= models.SET_NULL, null=True, default=1)
+    product_id = models.ForeignKey('Producto', on_delete= models.SET_NULL, null=True, default=1)
+    sede_id = models.ForeignKey(
+        'Sede', on_delete= models.SET_NULL, null=True, default=1)
+    def __str__(self):
+        return str (str(self.num_relacion)) 
