@@ -8,7 +8,7 @@ class PeliculasList extends Component {
   render() {
     const peliculas = this.props.peliculas;
     return (
-      <Table dark>
+      <Table dark className="Tabla">
         <thead>
           <tr>
             <th>nombre</th>

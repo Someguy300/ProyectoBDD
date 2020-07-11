@@ -50,3 +50,30 @@ padding: 0;
 .navbar{
 padding: 0 !important;
 }
+
+.Tabla{
+  background-color: black;
+  text-align: left;
+  border-collapse: collapse;
+  
+}
+
+th, td{
+  padding: 20px;
+}
+thead{
+
+  background-color: black;
+  border-bottom: solid 5px #0F362D;
+  color: white;
+
+}
+tr:nth-child(even){
+  background-color: rgb(46, 46, 46);
+
+}
+
+tr:hover td{
+  background-color: #69b2d4;
+  color:white
+}

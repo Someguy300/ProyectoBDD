@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import './Navbar.css';
 function Navbar() {
   return (
-    <Router>
+    
     <div className="center-text">
     <nav class="navbar navbar-expand-lg navbar-light bg-light ">
     <a class="navbar-brand" link to="/">Metrocine</a>
@@ -15,23 +15,34 @@ function Navbar() {
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item ">
-          <a class="nav-link" href="#">Inicio<span class="sr-only">(current)</span></a>
+          
+          <a class="nav-link" href="/">
+          <link to="/"></link>
+            Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Películas</a>
+        
+          <a class="nav-link" href="/Peliculas">
+          <link to="/Peliculas"></link>
+            Películas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Estrenos</a>
+       
+          <a class="nav-link" href="/Estrenos">
+          <link to="/Estrenos"></link>
+            Estrenos</a>
         </li>
         <li class="nav-item">
-         
-            <a class="nav-link" href="#" >Tienda</a>
+        <link to="/Tienda"></link>
+          <a class="nav-link" href="/Tienda" >
+          <link to="/Tienda"></link>
+            Tienda</a>
         </li>
       </ul>
+     
     </div>
   </nav>
   </div>
-  </Router>
 
   );
 }
