@@ -161,7 +161,15 @@ def facturas_detail(request, num_factura):
         factura.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+<<<<<<< HEAD
         
+=======
+#view relacion
+class Factura_entradaView(viewsets.ModelViewSet):
+    queryset = Factura_entrada.objects.all()
+    serializer_class = Factura_entradaSerializer
+
+>>>>>>> cd3feb0863dd30d53fdd0b5a6dcd3943241c427d
 
 #######PRODUCTOS########
 
@@ -199,6 +207,11 @@ def productos_detail(request, product_id):
     elif request.method == 'DELETE':
         producto.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+#view relacion
+class Factura_productoView(viewsets.ModelViewSet):
+    queryset = Factura_producto.objects.all()
+    serializer_class = Factura_productoSerializer
 
 
 ########FUNCION########
@@ -313,3 +326,7 @@ def sedes_detail(request, sede_id):
         sede.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+#view relacion
+class Sede_productoView(viewsets.ModelViewSet):
+    queryset = Sede_producto.objects.all()
+    serializer_class = Sede_productoSerializer
