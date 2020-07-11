@@ -41,6 +41,7 @@ class Peliculas extends Component {
           </Col>
         </Row>
       </Container>
+      
     );
   }
 }
