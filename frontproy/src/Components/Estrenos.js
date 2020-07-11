@@ -11,7 +11,7 @@ class Estrenos extends Component {
 
   render() {
     return (
-      <h1>Hola</h1>
+      <h1></h1>
     );
   }
 }

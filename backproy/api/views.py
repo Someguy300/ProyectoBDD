@@ -161,6 +161,8 @@ def facturas_detail(request, num_factura):
         factura.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+        
+
 #######PRODUCTOS########
 
 @api_view(['GET', 'POST'])

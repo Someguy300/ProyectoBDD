@@ -125,7 +125,11 @@ class NewPeliculaForm extends React.Component {
             value={this.defaultIfEmpty(this.state.fecha_estreno)}>
           </Input>
         </FormGroup>
-        <Button>Send</Button>
+        <Button 
+      
+        
+        
+        >Send</Button>
       </Form>
     );
   }
