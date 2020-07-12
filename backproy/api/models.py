@@ -4,15 +4,20 @@ from django.utils import timezone
 from decimal import Decimal
 from django.core.validators import MinValueValidator
 from multiselectfield import MultiSelectField
+from datetime import datetime   
 
 # Create your models here.
 LENGUAJES=(('ES','Español'),('EN','Ingles'))
 GENEROS=(('AC','Accion'),('AV','Aventura'),('AN','Animacion')
     ,('CO','Comedia'),('DR','Drama'),('DO','Documental'),('HO','Horror')
     ,('SU','Suspenso'),('AN','Animacion'))
+    
 ESTADOS=(('PE','Por Estrenar'),('EC','En Cartelera'),('AR','Archivada'))
+
 METODOS_PAGO=(('EF','Efectivo'),('DE','Debito'),('CR','Credito'))
+
 TIPO_DULCES=(('DU','Dulce'),('SA','Salado'),('BE','Bebida'),('CO','Combo'))
+
 HORARIOS= (('10','10:00 am'),('12','12:00 pm'),('2','2:00 pm'),('4','4:00 pm'),('6','6:00 pm'),('8','8:00 pm'))
 
 class Pelicula(models.Model):
@@ -83,7 +88,7 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=50,null=False, default="Producto")
     precio = models.DecimalField(decimal_places=2, max_digits=10, validators=[MinValueValidator(Decimal('0.01'))])
     tipo = models.CharField(max_length=2, default= ('DU','Dulce'), choices=TIPO_DULCES,null= False)
-    
+    last_update = models.DateTimeField(auto_now=True, blank=True)
     def __str__(self):
         return str (str(self.product_id)+" "+self.nombre)
 
@@ -91,6 +96,7 @@ class Factura_producto(models.Model):
     num_relacion = models.AutoField(primary_key=True)
     num_factura = models.ForeignKey('Factura', on_delete= models.SET_NULL, null=True, default=1)
     product_id = models.ForeignKey('Producto', on_delete= models.SET_NULL, null=True, default=1)
+    product_cost = models.DecimalField(decimal_places=2, max_digits=10, validators=[MinValueValidator(Decimal('0.01'))])
     def __str__(self):
         return str (str(self.num_relacion)) 
 

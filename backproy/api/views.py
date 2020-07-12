@@ -161,15 +161,7 @@ def facturas_detail(request, num_factura):
         factura.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-
         
-
-#view relacion
-class Factura_entradaView(viewsets.ModelViewSet):
-    queryset = Factura_entrada.objects.all()
-    serializer_class = Factura_entradaSerializer
-
-
 
 #######PRODUCTOS########
 
